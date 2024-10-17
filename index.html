@@ -26,9 +26,6 @@
     <label for="local">Local:</label>
     <input type="text" id="local" name="local" required>
 
-    <label for="file">Envie sua foto:</label>
-    <input type="file" id="file" name="file" accept="image/*" required>
-
     <button type="submit">Enviar</button>
   </form>
 
@@ -36,7 +33,7 @@
     document.getElementById('infoForm').addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      const formData = new FormData();
+      const formData = new URLSearchParams();
       formData.append('empresa', document.getElementById('empresa').value);
       formData.append('telefone', document.getElementById('telefone').value);
       formData.append('cnpj', document.getElementById('cnpj').value);
@@ -44,26 +41,17 @@
       formData.append('bairro', document.getElementById('bairro').value);
       formData.append('local', document.getElementById('local').value);
 
-      const fileInput = document.getElementById('file').files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(fileInput);
-      reader.onload = async function () {
-        const base64String = reader.result.split(',')[1];  // Converte a imagem em base64
-        formData.append('fileBase64', base64String);
-        formData.append('fileName', fileInput.name);
-        
-        const response = await fetch('https://script.google.com/macros/s/AKfycbwNnsSOhxQ3D7SLEyBzAUf0LATTAmSzl72CvvRlzEE5UPJiLuDwnK61eWXtUlsxg4U/exec', {
-          method: 'POST',
-          body: new URLSearchParams(formData)
-        });
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwNnsSOhxQ3D7SLEyBzAUf0LATTAmSzl72CvvRlzEE5UPJiLuDwnK61eWXtUlsxg4U/exec', {
+        method: 'POST',
+        body: formData
+      });
 
-        const result = await response.json();
-        if (result.success) {
-          alert('Informações enviadas com sucesso!');
-        } else {
-          alert('Erro ao enviar as informações.');
-        }
-      };
+      const result = await response.json();
+      if (result.success) {
+        alert('Informações enviadas com sucesso!');
+      } else {
+        alert('Erro ao enviar as informações.');
+      }
     });
   </script>
 </body>
