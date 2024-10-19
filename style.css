@@ -1,64 +1,80 @@
 /* Estilização geral */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f7f7f7;
     margin: 0;
     padding: 0;
+  }
+  
+  .container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding-top: 20px; /* Mantém o formulário no topo, com espaço */
   }
   
-  h1 {
-    color: #333;
-    text-align: center;
-  }
-  
-  form {
+  .form-container {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px 20px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
   }
   
+  /* Título */
+  h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilização dos grupos de formulário */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
   label {
     font-weight: bold;
-    color: #555;
+    color: #444;
+    margin-bottom: 5px;
     display: block;
-    margin-bottom: 8px;
   }
   
   input[type="text"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
   }
   
+  /* Botão de envio */
   button[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #4CAF50;
+   
+    background-color: #4169e1;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s;
   }
   
   button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #3158a3;
   }
   
   /* Responsividade */
   @media (max-width: 500px) {
-    form {
-      padding: 15px;
+    .form-container {
+      padding: 15px 20px;
+    }
+  
+    input[type="text"] {
+      padding: 8px;
+      font-size: 14px;
     }
   
     button[type="submit"] {
